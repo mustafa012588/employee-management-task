@@ -1,0 +1,103 @@
+<div class="container mt-5">
+  <h2 class="mb-4 text-center text-dark border-bottom pb-3">
+    {{ isEditMode ? ' Edit Employee' : ' Add New Employee' }}
+  </h2>
+
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="shadow-sm p-4 bg-light rounded">
+    <!-- First Name -->
+    <div class="mb-3">
+      <label for="firstName" class="form-label fw-semibold">First Name</label>
+      <input
+        type="text"
+        id="firstName"
+        class="form-control"
+        formControlName="firstName"
+        placeholder="Enter first name"
+      />
+      <div
+        *ngIf="employeeForm.get('firstName')?.touched && employeeForm.get('firstName')?.invalid"
+        class="text-danger mt-1"
+      >
+        First Name is required.
+      </div>
+    </div>
+
+    <!-- Last Name -->
+    <div class="mb-3">
+      <label for="lastName" class="form-label fw-semibold">Last Name</label>
+      <input
+        type="text"
+        id="lastName"
+        class="form-control"
+        formControlName="lastName"
+        placeholder="Enter last name"
+      />
+      <div
+        *ngIf="employeeForm.get('lastName')?.touched && employeeForm.get('lastName')?.invalid"
+        class="text-danger mt-1"
+      >
+        Last Name is required.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label fw-semibold">Email</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        formControlName="email"
+        placeholder="name@example.com"
+      />
+      <div
+        *ngIf="employeeForm.get('email')?.touched && employeeForm.get('email')?.invalid"
+        class="text-danger mt-1"
+      >
+        <span *ngIf="employeeForm.get('email')?.errors?.['required']">
+          Email is required.
+        </span>
+        <span *ngIf="employeeForm.get('email')?.errors?.['email']">
+          Please enter a valid email.
+        </span>
+      </div>
+    </div>
+
+    <!-- Position -->
+    <div class="mb-4">
+      <label for="position" class="form-label fw-semibold">Position</label>
+      <input
+        type="text"
+        id="position"
+        class="form-control"
+        formControlName="position"
+        placeholder="e.g. Software Engineer"
+      />
+      <div
+        *ngIf="employeeForm.get('position')?.touched && employeeForm.get('position')?.invalid"
+        class="text-danger mt-1"
+      >
+        Position is required.
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="d-flex justify-content-end">
+      <button
+        type="submit"
+        class="btn btn-primary px-4"
+        [disabled]="employeeForm.invalid"
+      >
+        {{ isEditMode ? 'Update' : 'Create' }}
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-secondary ms-2 px-4"
+        (click)="goBack()"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

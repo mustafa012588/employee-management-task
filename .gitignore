@@ -1,0 +1,25 @@
+# === Node / Angular ===
+node_modules/
+dist/
+.angular/
+.env
+npm-debug.log
+
+# === .NET Core ===
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# === VS / IDE ===
+.vs/
+.vscode/
+*.dbmdl
+
+# === OS Files ===
+Thumbs.db
+.DS_Store
+*.bak
+*.tmp
